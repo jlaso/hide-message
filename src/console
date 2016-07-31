@@ -7,7 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use JLaso\HideMessage\Command\DecodeCommand;
 use JLaso\HideMessage\Command\EncodeCommand;
-use Symfony\Component\Yaml\Yaml;
+use JLaso\HideMessage\Command\TransCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
@@ -15,6 +15,7 @@ $application->addCommands(
     array(
         new EncodeCommand(),
         new DecodeCommand(),
+        new TransCommand(),
     )
 );
 $application->run();
