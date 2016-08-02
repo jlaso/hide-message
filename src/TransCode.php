@@ -8,7 +8,12 @@ class TransCode extends AbstractCode
     {
         $result = '';
         $text = trim(strtolower(str_replace(array_keys($this->transliterationTable), array_values($this->transliterationTable), $text)));
-        $text = str_replace($this->nullChars, '', $text);
+        //$text = str_replace($this->nullChars, '', $text);
+        $text = str_replace(
+            array('.','/','-',':'),
+            array('punto','barra' ,'guion','dospuntos'),
+            $text
+        );
 
         for($i=0; $i<strlen($text); $i++){
             $char = $text[$i];
@@ -17,7 +22,7 @@ class TransCode extends AbstractCode
             }else if($char >= 'a' && $char <= 'z'){
                 $char = chr(ord('A') + (ord('z') - ord($char)));
             }else{
-                $char = '';
+                //$char = '';
             }
             
             $result = $char . $result;
